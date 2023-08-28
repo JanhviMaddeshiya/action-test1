@@ -4,8 +4,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    #- uses: actions/checkout@v3
+    - uses: actions/checkout@v3
     - name: Build the Docker image
-      working-directory: ../action-test1
       run: docker build . --file Dockerfile
       
