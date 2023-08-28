@@ -9,7 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile
+      run: docker build . --file Dockerfile -t github-1
 
     - name: Log-in
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+    - name: Push
+      run: |
+        docker tag github-1 janhvimaddeshiya/github-1
+        docker push janhvimaddeshiya/github-1
