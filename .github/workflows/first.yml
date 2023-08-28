@@ -13,5 +13,3 @@ jobs:
 
     - name: Log-in
       run: docker login --username=$username --password=$password
-  login:
-    runs-on: ubuntu-latest
