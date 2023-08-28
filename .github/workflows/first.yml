@@ -7,4 +7,11 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: docker build . --file Dockerfile
-      
+  login:
+    runs-on: ubuntu-latest
+    env:
+      username: $((secrets.DOCKER_USERNAME}}
+      password: ${{secrets.DOCKER_PASSWORD}}
+    steps:
+      - name: Log-in
+        run: docker login --username=$username --password=$password
