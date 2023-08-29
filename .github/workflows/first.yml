@@ -22,17 +22,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      #- uses: actions-hub/kubectl@master
-        #with:
-          #kubeconfig: ${{ secrets.KUBE_CONFIG }}
-      - name: Create kubeconfig
-        run: |
-          mkdir ${HOME}/.kube
-          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
-          
-
-      - name: Use context
-        run: kubectl config use-context octobay-api
-
-      - name: Deploy to K8s
-        run: kubectl get po
+      - name: kubectl
+        uses: myrotvorets/kubectl-action@2.0.0
+        with:
+          config: ${{ secrets.KUBE_CONFIG }}
+          version: latest
+          args: kubectl get po
