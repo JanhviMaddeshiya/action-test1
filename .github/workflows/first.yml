@@ -24,8 +24,8 @@ jobs:
       - name: kubectl
         uses: myrotvorets/kubectl-action@2.0.0
         with:
+          run: export KUBECONFIG = ${{ secrets.KUBE_CONFIG }}
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
           args: 
-            export KUBECONFIG = ${{ secrets.KUBE_CONFIG }}
             get pods
