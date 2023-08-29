@@ -21,8 +21,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
       - uses: actions-hub/kubectl@master
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          run: get po
+      - name: kube 
+        run: get po
