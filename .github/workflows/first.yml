@@ -17,4 +17,4 @@ jobs:
         docker push janhvimaddeshiya/github-1
 
     - name: Kube
-      run: echo ${{secrets.KUBE_CONFIG}} kubectl get po
+      run: echo ${{secrets.KUBE_CONFIG}} kubectl get pods
