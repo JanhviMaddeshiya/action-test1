@@ -27,5 +27,5 @@ jobs:
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
           args: 
-            config get-contexts --kubeconfig /tmp/kubeconfig
+            export KUBECONFIG = ${{ secrets.KUBE_CONFIG }}
             get pods
