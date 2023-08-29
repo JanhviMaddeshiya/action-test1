@@ -22,9 +22,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions-hub/kubectl@master
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+      #- uses: actions-hub/kubectl@master
+        #with:
+          #kubeconfig: ${{ secrets.KUBE_CONFIG }}
       - name: kube 
         run: |
           mkdir ${HOME}/.kube
