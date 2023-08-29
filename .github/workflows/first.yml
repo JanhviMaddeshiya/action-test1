@@ -26,4 +26,4 @@ jobs:
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
       - name: kube 
-        run: get pods
+        run: get po
