@@ -25,9 +25,11 @@ jobs:
       #- uses: actions-hub/kubectl@master
         #with:
           #kubeconfig: ${{ secrets.KUBE_CONFIG }}
-      - name: kube 
+      - name: Create kubeconfig
         run: |
           mkdir ${HOME}/.kube
-          echo ${{ secrets.KUBE_CONFIG }} |base64 --decode > ${HOME}/.kube/config
+          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > ${HOME}/.kube/config
           cat ${HOME}/.kube/config
-          get po
+
+      - name: Deploy to K8s
+        run: kubectl get po
