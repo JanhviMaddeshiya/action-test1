@@ -27,4 +27,4 @@ jobs:
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
-          args: kubectl get po
+          args: get po
