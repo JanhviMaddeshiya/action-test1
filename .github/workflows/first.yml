@@ -16,9 +16,14 @@ jobs:
         docker tag github-1 janhvimaddeshiya/github-1
         docker push janhvimaddeshiya/github-1
 
-    - uses: actions-hub/kubectl@master
-    - name: Kube
-      env:
-        kubeconfig: ${{secrets.KUBE_CONFIG}}
-        args:
-          get po
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: get pods
