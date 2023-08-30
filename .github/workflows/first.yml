@@ -30,4 +30,4 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
           
       - name: Deploy
-        run: kubectl get po
+        run: kubectl get pods
