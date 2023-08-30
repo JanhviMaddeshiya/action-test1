@@ -30,7 +30,8 @@ jobs:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
       - name: minikube
-        run: ping 192.168.49.2
-
+        run: |
+          ifconfig
+          
       - name: Get pods
         run: kubectl get pods
