@@ -25,13 +25,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/
 
       - name: minikube
         run: |
-          minikube status
+          kubectl config set-cluster local --server=${{ secrets.NGROK_URL }}
+          kubectl config use-context local
+          kubectl get pods --all-namespaces
           
-      - name: Get pods
-        run: kubectl get pods
