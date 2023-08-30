@@ -21,11 +21,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Set up Kubectl
-        uses: azure/k8s-set-context@v1
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
         with:
-          kubeconfig: ${{ secrets.KUBECONFIG }}
-      - name: Deploy
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
+
+      - name: Get pods
         run: kubectl get pods
