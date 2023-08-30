@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: kubectl
-        uses: qgxpagamentos/kubectl-set@v1
+        uses: gane5hvarma/kubectl-actions@master
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
