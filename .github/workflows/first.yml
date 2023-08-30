@@ -28,4 +28,4 @@ jobs:
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
           args: 
-            get po
+            get pods
