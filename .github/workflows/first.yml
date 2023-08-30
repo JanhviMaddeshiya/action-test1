@@ -21,11 +21,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-      - name: Set up Kubectl
-        uses: myrotvorets/kubectl-action@2.0.0
+      - uses: actions/checkout@v1
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
         with:
-          kubeconfig: ${{ secrets.KUBE_CONFIG }}
           args: get pods
