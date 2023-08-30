@@ -28,4 +28,4 @@ jobs:
         uses: myrotvorets/kubectl-action@2.0.0
         with:
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
-          args: get po
+          args: get pods
