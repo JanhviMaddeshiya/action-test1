@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: kubectl
-        uses: myrotvorets/kubectl-action@2.0.0
+        uses: azure/k8s-set-context@v3
         with:
           config: ${{ secrets.KUBE_CONFIG }}
           version: latest
