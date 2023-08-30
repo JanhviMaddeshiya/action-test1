@@ -21,18 +21,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up kubectl
-        run: |
-          curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-          chmod +x kubectl
-          sudo mv kubectl /usr/local/bin/
-
-      - name: minikube
-        run: |
-          kubectl config set-cluster local --server=${{ secrets.NGROK_URL }}
-          kubectl config use-context local
-          kubectl get pods --all-namespaces
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Set up Kubectl
+        uses: myrotvorets/kubectl-action@2.0.0
+        with:
+          kubeconfig: ${{ secrets.KUBE_CONFIG }}
           
+      - name: Deploy
+        run: kubectl get pods
