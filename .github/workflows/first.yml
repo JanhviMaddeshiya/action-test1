@@ -33,4 +33,4 @@ jobs:
         run: ping 192.168.49.2
 
       - name: Get pods
-        run: kubectl get po
+        run: kubectl get pods
