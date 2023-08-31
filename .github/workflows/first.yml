@@ -24,5 +24,12 @@ jobs:
       - uses: actions/checkout@v1
       - name: minikube
         run: minikube start
+        
       - name: Copy Repo to .kube
         run: kubectl get po
+        
+      - name: Apply deployment
+        run: kubectl apply -f deploy.yaml
+        
+      - name: Verify everything
+        run: kubectl get all
