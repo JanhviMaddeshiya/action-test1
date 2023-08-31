@@ -22,6 +22,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - name: Copy Repo to .kube
+        run: |
+          cp -r ca.crt /github/home/.kube/ca.crt
+          cp -r client.crt /github/home/.kube/client.crt
+          cp -r client.key /github/home/.kube/client.key
+        
       - uses: actions-hub/kubectl@master
         env:
           KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
