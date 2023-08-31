@@ -22,15 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - uses: actions-hub/kubectl@master
+      - name: minikube
+        run: minikube start
       - name: Copy Repo to .kube
-        run: |
-          cd /github/home/.kube
-          touch ca.crt client.crt client.key
-          cp -r ca.crt /github/home/.kube/ca.crt
-          cp -r client.crt /github/home/.kube/client.crt
-          cp -r client.key /github/home/.kube/client.key
-        
-        env:
-          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
-          run: get po
+        run: kubectl get po
